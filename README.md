@@ -45,9 +45,10 @@ El dataset fue obtenido de Kaggle:
 
 ## 📁 Archivos del repositorio
 
+- ` 🗎 Base de datos: archivos inciales: https://drive.google.com/drive/u/0/folders/12l2UZsUs4DH-oBq9xjpdUcKwA3CDAzLY , estos archivos luego se subieron a BigQuery
 - `📥 Anclaje_cloud.ipynb`: script para cargar, consultar y modificar datos en BigQuery.
 - `📈 proyecto_final.ipynb`: análisis exploratorio, limpieza de datos, regresión y cálculo del stock óptimo.
-- `📊 Power_bi_Amalia2.pbix`: visualización de resultados finales. *(agregar enlace si está publicado online)*
+- `📊 Power_bi_Amalia2.pbix`: visualización de resultados finales.  https://drive.google.com/drive/u/0/folders/12l2UZsUs4DH-oBq9xjpdUcKwA3CDAzLY (agregar enlace si está publicado online)*
 - `🗎 README.md`: este archivo.
 
 ---
