@@ -1,95 +1,76 @@
-Proyecto Final - Soy Henry - Data 
+# 🧠 Proyecto Final - Optimización de Stock con BigQuery, Python y Power BI
 
-Este proyecto corresponde al trabajo final del bootcamp de Data Analytics de Soy Henry. El objetivo es realizar un análisis de datos de compras y ventas del año 2016, aplicando técnicas de exploración, limpieza y modelado con Python.
+Este proyecto corresponde al trabajo final del bootcamp de **Data Analytics de Soy Henry**.  
 
-📁 Estructura del proyecto
-Proyecto_final.ipynb: Notebook principal con el análisis completo.
-*.csv: Archivos con los datos utilizados para el análisis.
-.gitignore: Configurado para excluir archivos innecesarios del repositorio.
-requirements.txt: Lista de bibliotecas necesarias para ejecutar el proyecto.
-nanclajecloud Archivo relacionado con la configuración o integración en entorno cloud
-⚠️ Recomendación: Mover los archivos .csv a una carpeta data/ y excluir esa carpeta del repositorio para mantenerlo liviano.
-Se puede acceder al mismo desde este link de drive https://drive.google.com/drive/folders/1LOM0SoFcyp2wlE5ckuQeWrvvkuOFua4f?usp=sharing
+🔍 **Objetivo del proyecto**  
+Determinar el **stock óptimo** de los más de **12.000 productos** que comercializa una empresa con **80 sucursales**, así como definir **estrategias para optimizar el capital de trabajo**, reduciendo costos de almacenamiento, logística y faltantes.
 
+El dataset fue obtenido de Kaggle:  
+📂 [Inventory Analysis Case Study – Kaggle](https://www.kaggle.com/datasets/bhanupratapbiswas/inventory-analysis-case-study)
 
-📊 Datos utilizados
-2017PurchasePricesDec.csv
-BegInvFINAL12312016.csv
-EndInvFINAL12312016.csv
-InvoicePurchases12312016.csv
-PurchasesFINAL12312016.csv
-SalesFINAL12312016.csv
-data_final2.xlsx
-🧪 Tecnologías y librerías utilizadas
-Python 3.13 (o compatible)
-Jupyter Notebook
-Pandas
-NumPy
-Matplotlib
-Scikit-learn
-Category Encoders
+---
 
-🧠 Proyecto Final - Optimización de Stock con Análisis de Datos en BigQuery y Python
-Este repositorio contiene dos notebooks principales que conforman el proceso completo del proyecto:
+## ✅ Etapas del proyecto
 
-📥 Anclaje_cloud.ipynb: Encargado de la carga, confirmación y eliminación de datos en BigQuery.
-📈 proyecto_final.ipynb: Realiza el análisis exploratorio, ETL y cálculo del stock óptimo.
-☁️ Anclaje en la Nube - Anclaje_cloud.ipynb
-Este notebook se encarga de simular y cargar datos nuevos en BigQuery, así como su verificación y limpieza.
+1. **Conexión a la base de datos en BigQuery**  
+   Subida y estructuración del dataset para consultas eficientes.
 
-🔹 1. Importación de librerías
-Se importa pandas como librería base.
-🔹 2. Definición de nuevos datos a cargar
-Generación de listas de datos simulados:
-datos_new_data1 → Producto
-datos_new_data2 → Inventario inicial
-datos_new_data3 → Inventario final
-datos_new_data4 → Compras
-datos_new_data5 → Detalle de compras
-datos_new_data6 → Ventas
-🔹 3. Carga de datos en BigQuery
-Uso de cargar_datos_una_tabla para insertar datos en las tablas del dataset andes_insight del proyecto soy-henry-459003:
-Productos
-Inventario_inicial
-Inventario_final
-Compras
-Detalle_compras
-Ventas
-🔹 4. Confirmación de datos cargados
-Verificación de los datos insertados con confirmar_nuevos_datos_cargados.
-🔹 5. Eliminación de datos cargados
-Uso de eliminar_datos_cargados_por_columna para limpiar las tablas anteriores.
-🔹 6. Confirmación de eliminación de datos
-Validación final para asegurar que los datos fueron correctamente eliminados.
-📊 Análisis y Optimización de Stock - proyecto_final.ipynb
-Este notebook toma los datos desde BigQuery y realiza todo el análisis para determinar el stock óptimo de productos.
+2. **Análisis Exploratorio Inicial (EDA)**  
+   - Tamaño y estructura de tablas  
+   - Tipos de datos  
+   - Estadísticas descriptivas (máximo, mínimo, media, moda)  
+   - Detección de nulos y outliers  
+   *(realizado en Python)*
 
-🔹 0. Fuente de datos
-Conexión directa a la base de datos andes_insight luego del EDA.
-🔹 1. Importación de librerías
-🔹 2. Carga del dataset
-🔹 3. EDA Inicial (Análisis Exploratorio de Datos)
-A. Análisis integral: dimensiones, tipos, nulos, estadísticas numéricas, categóricas.
-B. Columnas con alta variabilidad.
-C. Columnas con valores numéricos en cero.
-🔹 4. ETL - Extracción, Transformación y Limpieza
-A. Reemplazo de valores nulos.
-B. Reemplazo de ceros en columnas numéricas, si corresponde.
-C. Conversión de tipos en variables categóricas (Brand, Store, VendorNumber).
-🔹 5. Determinación de Stock Óptimo
-A. Fórmula: Stock óptimo = Demanda diaria promedio × Tiempo de reposición promedio + Stock de seguridad.
-B. Cálculo del tiempo de reposición y su desviación estándar por InventoryID.
-C. Cálculo de demanda diaria y su desviación estándar por InventoryID.
-D. Unión de tablas: Inventario Inicial, Final, Tiempo de Reposición y Demanda Diaria.
-E. Estimación con Machine Learning (Random Forest) para productos sin historial.
-F. Comparación entre demanda estimada por ML vs. fórmula tradicional.
-G. Determinación final de stock óptimo.
-H. Exportación de tabla stock_óptimo.
-🔹 6. EDA Final
-Revisión final del estado del dataset después del procesamiento.
-Autores
-Amalia Granata
-Jenny Ortiz
-Luis Ladino
-Noelia Calligaro
-"# StockOptimo1"  
+3. **Procesamiento de datos (ETL)**  
+   - Filtrado de columnas y registros  
+   - Reemplazo de valores faltantes  
+   - Detección y tratamiento de valores atípicos  
+   - Aplicación de técnicas de Machine Learning (regresión lineal) para completar datos faltantes críticos
+
+4. **Cálculo de Stock Óptimo**  
+   Fórmula aplicada:  
+   `Stock Óptimo = Stock Base + Stock de Seguridad`
+
+5. **Análisis Exploratorio Final (EDA 2)**  
+   - Visualización de variables clave mediante gráficos  
+   - Detección de tendencias  
+   *(realizado con Python y Power BI)*
+
+6. **Visualización de resultados y estrategias**  
+   - Dashboard final en Power BI con KPIs clave  
+   - Conclusiones y recomendaciones de mejora
+
+---
+
+## 📁 Archivos del repositorio
+
+- `📥 Anclaje_cloud.ipynb`: script para cargar, consultar y modificar datos en BigQuery.
+- `📈 proyecto_final.ipynb`: análisis exploratorio, limpieza de datos, regresión y cálculo del stock óptimo.
+- `📊 Power_bi_Amalia2.pbix`: visualización de resultados finales. *(agregar enlace si está publicado online)*
+- `🗎 README.md`: este archivo.
+
+---
+
+## 🧪 Tecnologías y librerías utilizadas
+
+- **Lenguaje:** Python 3.13  
+- **Entorno:** Jupyter Notebook  
+- **Base de datos:** Google BigQuery  
+- **Visualización:** Power BI  
+- **Librerías:**  
+  - `pandas`  
+  - `numpy`  
+  - `matplotlib`  
+  - `scikit-learn`  
+  - `category_encoders`
+
+---
+
+## 👥 Autores
+
+- **Amalia Granata**  
+- Jenny Ortiz  
+- Luis Ladino  
+- Noelia Calligaro
+
